@@ -1,0 +1,209 @@
+# ======================
+# OPERATING SYSTEM FILES
+# ======================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ======================
+# PYTHON (Flask Backend)
+# ======================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+ENV/
+.venv
+env/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs and databases
+logs/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+pgdata/
+
+# Flask specific
+instance/
+.webassets-cache
+*.pid
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff (if ever used)
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Scrapy stuff
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# setuptools
+*.egg-info/
+dist/
+build/
+
+# Cython
+*.c
+*.cpp
+
+# ======================
+# NODE.JS (Frontend & Shared)
+# ======================
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Next.js specific
+.next/
+out/
+build/
+*.pnp.*
+.pnp.js
+
+# Testing
+coverage/
+*.lcov
+
+# Misc
+*.tsbuildinfo
+*.swc
+
+# ======================
+# DOCKER & INFRASTRUCTURE
+# ======================
+# Docker
+.dockerignore
+docker-compose.override.yml
+*.pid
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+# Kubernetes
+*.kubeconfig
+
+# ======================
+# CI/CD
+# ======================
+# Jenkins
+.jenkins/
+
+# GitHub Actions
+.github/workflows/*.yml
+
+# ======================
+# PROJECT-SPECIFIC
+# ======================
+# Uploads (adjust if you store uploads in project)
+uploads/
+media/
+
+# Local config overrides
+config.local.json
+config/*.local.js
+config/*.local.ts
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# Editor backups
+*~
+*.bak
+*.tmp
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# ======================
+# SECURITY (CRITICAL)
+# ======================
+# Never commit secrets!
+secrets/
+*.pem
+*.key
+*.crt
+id_rsa
+id_rsa.pub
+*.p12
+*.pfx

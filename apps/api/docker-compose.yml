@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: mailfit_db
+      POSTGRES_USER: mailfit
+      POSTGRES_PASSWORD: mailfit123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://mailfit:mailfit123@postgres:5432/mailfit_db
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./apps:/app/apps
+      - ./logs:/app/logs
+
+  celery:
+    build: .
+    command: celery -A apps.api.main.celery worker --loglevel=info
+    environment:
+      - DATABASE_URL=postgresql://mailfit:mailfit123@postgres:5432/mailfit_db
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+      - api
+
+volumes:
+  postgres_data:

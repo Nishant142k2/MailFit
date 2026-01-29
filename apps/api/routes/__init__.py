@@ -9,4 +9,4 @@ def register_blueprints(app):
     # Register blueprints with URL prefix
     app.register_blueprint(auth_bp, url_prefix='/api/v1/auth')
 
-    print("✅ All blueprints registered successfully")
+    print("All blueprints registered successfully")
