@@ -291,11 +291,39 @@ def login_request():
             email=email,
             action='login'
         ).order_by(OTPLog.created_at.desc()).first()
-
+        
         if recent_log:
             time_diff = datetime.utcnow() - recent_log.created_at
             if time_diff.total_seconds() < 60:
                 wait_time = 60 - int(time_diff.total_seconds())
                 return jsonify({
                     'error': f'Please wait {wait_time} seconds before requesting another OTP'
-                }),
+                }), 429
+         # Generate OTP
+        otp = user.generate_otp()
+        db.session.commit()
+
+        # Log OTP request
+        otp_log = OTPLog(
+            email=email,
+            action='login',
+            ip_address=request.remote_addr
+        )
+        db.session.add(otp_log)
+        db.session.commit() 
+        
+        # Send OTP email
+        send_otp_email.delay(email, otp, 'login')
+
+        return jsonify({
+            'message': 'Login OTP sent successfully',
+            'expires_in': '10 minutes'
+        }), 200 
+        
+    except Exception as e:
+        db.session.rollback()
+        print(f"Login OTP error: {str(e)}")
+        return jsonify({'error': 'Failed to send login OTP', 'details': str(e)}), 500
+
+
+            
