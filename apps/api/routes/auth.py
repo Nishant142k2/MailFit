@@ -26,7 +26,8 @@ def is_strong_password(password):
         return False, "Password must contain at least one lowercase letter"
     if not re.search(r'[0-9]', password):
         return False, "Password must contain at least one number"
-    return True, "Password is strong"
+    return True, "Password is   strong"
+
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
