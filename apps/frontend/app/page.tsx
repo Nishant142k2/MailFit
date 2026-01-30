@@ -44,7 +44,7 @@ export default function LandingPage() {
             <Link href="/login" className="btn-signin">
               Sign In
             </Link>
-            <Link href="/signup" className="btn-signup">
+            <Link href="/sign-up" className="btn-signup">
               Sign Up
             </Link>
           </div>
